@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/sign_up_screen.css') }}">
+<title>Register User</title>
+<div class="content">
+ <!--Image & Title-->
+    <div class="text">CIS Resource Dashboard - Sign Up</div>
+    <div class="msg">{{ msg }}</div><br>
+      <form action="{{ url_for('new_issue') }}" method="post">
+        <!--Email & password input place-->
+        <div class="field">
+          <span class="fa fa-user"></span>
+          <input type="text" name="first_name" id="fname" placeholder="First Name / User Name">
+        </div>
+        <div class="field">
+          <span class="fa fa-user"></span>
+          <input type="text" name="last_name" id="lname" placeholder="Last Name">
+        </div>
+        <div class="field">
+          <span class="fa fa-envelope"></span>
+          <input type="text" name="email_id" id="email_id" placeholder="Email id / EID">
+        </div>
+        <div class="field">
+          <span class="fa fa-lock"></span>
+          <input type="password" name="password" id="Password" placeholder="Password (min. 6 characters)">
+        </div>
+        <div class="field">
+          <label>Career Level</label>
+                <select name="career_level_value">
+                    <option>Level 12</option>
+                    <option>Level 11</option>
+                    <option>Level 10</option>
+                    <option>Level 9</option>
+                    <option>Level 8</option>
+                    <option>Level 7</option>
+                    <option>Level 6</option>
+                    <option>Leadership</option>
+                </select>
+
+        </div>
+        <div class="field_timestamp">
+          <label>Registration Timestamp</label>
+            <span class="fa fa-calendar"></span>
+            <input type="text" name="registration_timestamp" id="registration_timestamp" placeholder="Registration Time"
+            value={{current_timestamp}} readonly>
+        </div>
+
+       <!--login & outer button-->
+        <button class="button button1" name="button" value="back" type="submit" id="back">Back</button>
+        <button class="button button2" name="button" value="reset" type="reset" id="reset">Reset</button>
+        <button class="button button3" name="button" value="submit" type="submit" id="submit">Submit</button>
+
+        <footer>
+            <p class="copyright">© CIS 2023</p>
+        </footer>
+      </form>
+  </div>
