@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/newstyle.css') }}">
+<body>
+<title>New Issue</title>
+<div class="content">
+ <!--Image & Title-->
+    <div class="text">Flux PR Tool</div>
+    <div class="text">Create a new issue</div>
+
+      <form action="{{ url_for('new_issue') }}" method="post">
+        <div class="field">
+          <label>Issue Title</label>
+          <span class="fa fa-heading"></span>
+          <input type="text" name="issue_title" id="issue_title" placeholder="Issue/Bug Title">
+        </div>
+        <div class="field">
+          <label>Issue Short Description</label>
+          <span class="fa fa-file-word"></span>
+          <input type="text" name="issue_short_description" id="issue_short_description" placeholder="Issue Short Description">
+        </div>
+        <div class="field">
+          <label>Category</label>
+                <select name="issue_category">
+                    <option>Software</option>
+                    <option>Hardware</option>
+                    <option>Others</option>
+                </select>
+        </div>
+        <div class="field">
+          <label>Priority</label>
+                <select name="issue_priority">
+                    <option>Critical</option>
+                    <option>High</option>
+                    <option>Medium</option>
+                    <option>Low</option>
+                </select>
+        </div>
+        <div class="field">
+          <label>Assignment Group</label>
+                <select name="assignment_group">
+                    <option>Assignment Group</option>
+                    <option>Software Support Group</option>
+                    <option>Hardware Support Group</option>
+                    <option>Miscellaneous Support Group</option>
+                </select>
+        </div>
+        <div class="field">
+          <label>Attachments</label>
+          <span class="fa fa-paperclip"></span>
+          <button class="button button4" name="button" value="browse" type="submit" id="browse_attachment">Browse</button>
+        </div>
+        <div class="field">
+          <label>Registration Timestamp</label>
+            <span class="fa fa-calendar"></span>
+            <input type="text" name="registration_timestamp" id="registration_timestamp" placeholder="Registration Time"
+            value={{current_timestamp}} readonly>
+        </div>
+        <div class="field">
+          <label>Ticket Submitted By</label>
+          <span class="fa fa-user"></span>
+          <input type="text" name="ticket_submitted_by" id="ticket_submitted_by" placeholder="User name/User Id">
+        </div>
+       <!--login & outer button-->
+        <button class="button button1" name="button" value="back" type="submit" id="back">Back</button>
+        <button class="button button2" name="button" value="reset" type="reset" id="reset">Reset</button>
+        <button class="button button3" name="button" value="submit" type="submit" id="submit">Submit</button>
+
+        <footer>
+            <p class="copyright">© Santosh K</p>
+        </footer>
+      </form>
+</div>
+</body>

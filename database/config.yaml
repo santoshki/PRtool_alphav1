@@ -1,0 +1,6 @@
+database:
+  db_hostname: localhost
+  db_name: issue_reporting
+  db_username: emprsc1
+  db_password: admin123
+  secret_key: 5D4C1
