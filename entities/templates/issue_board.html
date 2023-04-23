@@ -3,6 +3,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/issue_board_style.css') }}">
 <title>Issue Board</title>
+<h3>Hi {{ current_user.username }}</h3>
+<a href="{{ url_for('logout')}}">Logout Here</a>
  <form method="post">
   <div class="content">
  <!--Image & Title-->

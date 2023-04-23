@@ -8,9 +8,10 @@ db = SQLAlchemy()
 
 
 class UserModel(UserMixin, db.Model):
-    __tablename__ = 'users'
+    __tablename__ = 'isr_registered_users'
 
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200))
     email = db.Column(db.String(80), unique=True)
     username = db.Column(db.String(100))
     password_hash = db.Column(db.String())

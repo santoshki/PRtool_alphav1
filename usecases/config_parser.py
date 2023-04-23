@@ -1,7 +1,7 @@
 import yaml
 from yaml.loader import SafeLoader
 
-with open('C:\\Users\\santosh.a.d.kulkarni\\PycharmProjects\\PRtool_alphav1\\database\\config.yaml') as confile:
+with open('E:\\Entreprenuership\\PycharmProjects\\PRtool_alphav1\\database\\config.yaml') as confile:
     config_data = yaml.load(confile, Loader=SafeLoader)
 
 db_details = config_data["database"]

@@ -37,6 +37,8 @@ def login():
             print("User authenticated.")
             login_user(user)
             return redirect('/blogs')
+        else:
+            print("Invalid username/password.")
 
     return render_template('login.html')
 

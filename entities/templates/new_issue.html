@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="{{ url_for('static',filename='css/new_issue_style.css') }}">
+<form action="" method="post">
+<head>
+    <meta charset="UTF-8">
+    <title>New Issue</title>
+    <h1>Flux PR Tool</h1>
+</head>
+<div class="content">
+    <label>Issue Title</label>
+    <input type="text" id="issue_title" name="issue_title">
+    <label>Issue Short Description</label>
+    <input type="text" id="issue_short_description" name="issue_short_description">
+    <div class="custom-select">
+        <label>Category</label>
+        <select>
+          <option value="software">Software</option>
+          <option value="hardware">Hardware</option>
+          <option value="others">Others</option>
+        </select>
+        <label>Priority</label>
+        <select name="priority" id="priority">
+            <option value="critical">Critical</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+        </select>
+        <label>Assignment Group</label>
+        <select name="assignment_group" id="assignment_group">
+            <option value="software_support_group">Software Support Group</option>
+            <option value="hardware_support_group">Hardware Support Group</option>
+            <option value="miscellaneous_support_group">Miscellaneous Support Group</option>
+        </select>
+    </div>
+    <label>Attachments</label>
+    <label>Ticket submitted by</label>
+    <input type="text" id="ticket_submitted_by" name="ticket_submitted_by">
+    <button type="submit" name="submit_button" value="about">About</button>
+    <button type="submit" name="submit_button" value="reset">Reset</button>
+    <button type="submit" name="submit_button" value="submit">Submit</button>
+</div>
+</form>
