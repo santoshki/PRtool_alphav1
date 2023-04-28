@@ -1,0 +1,21 @@
+<!--font-awesome icon CDN link-->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/issue_board_style.css') }}">
+<title>Issue Board</title>
+ <form method="post">
+  <div class="content">
+ <!--Image & Title-->
+    <div class="text">New Issue(s)</div>
+
+        <button class="button button1" name="button" value="new_issue" type="submit" id="new_issue">Create new Issue</button> <br><br><br>
+  </div>
+  <div class="content">
+ <!--Image & Title-->
+    <div class="text">Existing Issue(s)</div>
+        <button class="button button2" name="button" value="existing_issues" type="submit" id="login">Open Existing Issue</button> <br><br><br>
+  </div>
+     <footer>
+            <p class="copyright">© CIS 2023</p>
+        </footer>
+ </form>
