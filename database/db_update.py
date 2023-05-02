@@ -3,8 +3,7 @@ import sqlite3 as sql
 
 def db_delete_table(table_name):
     try:
-        connection = sql.connect("C:\\Users\\santosh.a.d.kulkarni\\PycharmProjects\\PRtool_alphav1\\database"
-                                 "\\pr_database.db")
+        connection = sql.connect("E:\\Entreprenuership\\PycharmProjects\\PRtool_alphav1\\entities\\isr_database.db")
         query = "DROP TABLE " + str(table_name)
         connection.execute(query)
         print("Table dropped from the db.")
@@ -15,4 +14,4 @@ def db_delete_table(table_name):
 
 
 if __name__ == '__main__':
-    db_delete_table("pr_registered_users")
+    db_delete_table("isr_new_issue")

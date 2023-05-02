@@ -2,6 +2,7 @@ import datetime
 from flask import Flask, render_template, request, redirect
 from flask_login import current_user, login_user, logout_user
 from models import UserModel, db, login
+from database import db_insert
 
 app = Flask(__name__)
 app.secret_key = 'xyz'
@@ -68,6 +69,8 @@ def new_issue():
             issue_priority = form_data.get("issue_priority")
             issue_assignment_group = form_data.get("assignment_group")
             issue_submitted_by = form_data.get("ticket_submitted_by")
+            db_insert.register_new_issue(issue_title, issue_short_description, issue_category, issue_priority, issue_assignment_group,
+                       issue_submitted_by)
         elif request.form["button"] == "browse":
             print("Browse attachments button pressed.Attachment(s) to be uploaded...")
     return render_template("new_issuev1.1.html", current_timestamp=ct)
@@ -75,9 +78,11 @@ def new_issue():
 
 @app.route('/sign_up/', methods=['GET', 'POST'])
 def sign_up():
+    ct = datetime.datetime.now()
     if current_user.is_authenticated:
         return redirect('/blogs')
     if request.method == "POST":
+
         if request.form["button"] == "sign_up":
             name = request.form["name"]
             username = request.form["username"]
@@ -85,15 +90,14 @@ def sign_up():
             password = request.form["password"]
             if UserModel.query.filter_by(email=email_id).first():
                 return "Email already Present"
-            user = UserModel(email=email_id, username=username, name=name)
+            user = UserModel(email=email_id, username=username, name=name, registration_timestamp=ct)
             user.set_password(password)
             db.session.add(user)
             db.session.commit()
             print("User registration completed successfully.")
             msg = 'You have successfully registered !'
             return redirect('/login')
-
-    return render_template("sign_up_screen.html")
+    return render_template("sign_up_screen.html", current_timestamp=ct)
 
 
 @app.route('/forgot_password/', methods=['GET', 'POST'])
