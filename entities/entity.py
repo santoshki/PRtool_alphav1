@@ -3,11 +3,12 @@ from flask import Flask, render_template, request, redirect
 from flask_login import current_user, login_user, logout_user
 from models import UserModel, db, login
 from database import db_insert, db_read
+from parser import config_parser
 
 app = Flask(__name__)
-app.secret_key = 'xyz'
+app.secret_key = config_parser.db_secret_key
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///isr_database.db '
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + config_parser.db_hostname
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)

@@ -1,14 +1,17 @@
 import sqlite3
+from parser import config_parser
 
 
 def create_table(table_name):
     try:
-        connection_db = sqlite3.connect("E:\\Entreprenuership\\PycharmProjects\\PRtool_alphav1\\entities\\isr_database.db")
+        connection_db = sqlite3.connect(config_parser.db_hostname)
         cursor_obj = connection_db.cursor()
-        query = "CREATE TABLE " + str(table_name) + "(issue_title VARCHAR(255), " \
-                                                    "issue_short_description VARCHAR(255),issue_category VARCHAR(255), issue_priority " \
-                                                    "VARCHAR(255), issue_assignment_group VARCHAR(255), issue_submitted_by VARCHAR(255)); "
-        cursor_obj.execute(query)
+        new_issue_query = "CREATE TABLE " + str(table_name) + "(issue_title VARCHAR(255), issue_short_description " \
+                                                              "VARCHAR(255),issue_category VARCHAR(255), " \
+                                                              "issue_priority VARCHAR(255), issue_assignment_group " \
+                                                              "VARCHAR(255),issue_submitted_by VARCHAR(255)); "
+        create_table_query = new_issue_query
+        cursor_obj.execute(create_table_query)
         print("Table created successfully!")
         cursor_obj.close()
         connection_db.commit()

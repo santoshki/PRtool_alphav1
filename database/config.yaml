@@ -1,6 +1,4 @@
 database:
-  db_hostname: localhost
-  db_name: issue_reporting
-  db_username: emprsc1
-  db_password: admin123
-  secret_key: 5D4C1
+  db_location: C:\Users\santosh.a.d.kulkarni\PycharmProjects\PRtool_alphav1\entities\instance\
+  db_name: isr_database.db
+  db_secret_key: 5D4C1

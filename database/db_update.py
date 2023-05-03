@@ -1,9 +1,10 @@
 import sqlite3 as sql
+from parser import config_parser
 
 
 def db_delete_table(table_name):
     try:
-        connection = sql.connect("E:\\Entreprenuership\\PycharmProjects\\PRtool_alphav1\\entities\\isr_database.db")
+        connection = sql.connect(config_parser.db_hostname)
         query = "DROP TABLE " + str(table_name)
         connection.execute(query)
         print("Table dropped from the db.")

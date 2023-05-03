@@ -1,8 +1,9 @@
 import sqlite3 as sql
+from parser import config_parser
 
 
 def read_data(table_name):
-    con = sql.connect("C:\\Users\\santosh.a.d.kulkarni\\PycharmProjects\\PRtool_alphav1\\entities\\instance\\isr_database.db")
+    con = sql.connect(config_parser.db_hostname)
     cur = con.cursor()
 
     read_query = "SELECT * FROM " + table_name
