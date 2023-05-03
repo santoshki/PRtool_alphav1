@@ -2,7 +2,7 @@ import datetime
 from flask import Flask, render_template, request, redirect
 from flask_login import current_user, login_user, logout_user
 from models import UserModel, db, login
-from database import db_insert
+from database import db_insert, db_read
 
 app = Flask(__name__)
 app.secret_key = 'xyz'
@@ -69,8 +69,8 @@ def new_issue():
             issue_priority = form_data.get("issue_priority")
             issue_assignment_group = form_data.get("assignment_group")
             issue_submitted_by = form_data.get("ticket_submitted_by")
-            db_insert.register_new_issue(issue_title, issue_short_description, issue_category, issue_priority, issue_assignment_group,
-                       issue_submitted_by)
+            db_insert.register_new_issue(issue_title, issue_short_description, issue_category, issue_priority,
+                                         issue_assignment_group, issue_submitted_by)
         elif request.form["button"] == "browse":
             print("Browse attachments button pressed.Attachment(s) to be uploaded...")
     return render_template("new_issuev1.1.html", current_timestamp=ct)
@@ -82,7 +82,6 @@ def sign_up():
     if current_user.is_authenticated:
         return redirect('/blogs')
     if request.method == "POST":
-
         if request.form["button"] == "sign_up":
             name = request.form["name"]
             username = request.form["username"]
@@ -109,6 +108,7 @@ def forgot_password():
             print("Resetting user's password...")
             reg_email_id_value = request.form["registered_email_id"]
             print("Registered Email id:", reg_email_id_value)
+
             # cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
             # cursor.execute('SELECT * FROM user_credentials WHERE email_id = % s', (reg_email_id_value,))
             # account = cursor.fetchone()
@@ -121,7 +121,7 @@ def forgot_password():
             # account = cursor.fetchone()
             # print("Updated record:", account)
         elif request.form["button"] == "back":
-            return render_template('login.html')
+            return redirect('/login')
     return render_template('forgot_password_screen.html', current_timestamp=registration_timestamp)
 
 
