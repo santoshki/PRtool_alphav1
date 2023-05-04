@@ -3,3 +3,6 @@ database:
   db_name: isr_database.db
   db_secret_key: 5D4C1
   password_reset_value: test123
+  db_table_names:
+    users: isr_registered_users
+    issues: isr_issues

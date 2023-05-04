@@ -53,7 +53,19 @@ def issue_board():
             return redirect('/new_issue/')
         elif request.form["button"] == "existing_issues":
             print("Opening existing issues list")
+            return redirect('/existing_issues/')
     return render_template("issue_board.html")
+
+
+@app.route('/existing_issues/', methods=['GET', 'POST'])
+def existing_issues():
+    no_of_issues, issue_title, issue_short_description, issue_category, issue_priority, issue_assignment_group, \
+    issue_created_on, issue_submitted_by = db_read.read_data(config_parser.db_users)
+    return render_template("existing_issues_dashboard.html", len=no_of_issues, issue_title=issue_title,
+                           issue_short_description=issue_short_description,
+                           issue_category=issue_category, issue_priority=issue_priority,
+                           issue_assignment_group=issue_assignment_group,
+                           issue_created_on=issue_created_on, ticket_submitted_by=issue_submitted_by)
 
 
 @app.route('/new_issue/', methods=['GET', 'POST'])
@@ -71,7 +83,7 @@ def new_issue():
             issue_assignment_group = form_data.get("assignment_group")
             issue_submitted_by = form_data.get("ticket_submitted_by")
             db_insert.register_new_issue(issue_title, issue_short_description, issue_category, issue_priority,
-                                         issue_assignment_group, issue_submitted_by)
+                                         issue_assignment_group, ct, issue_submitted_by)
         elif request.form["button"] == "browse":
             print("Browse attachments button pressed.Attachment(s) to be uploaded...")
     return render_template("new_issuev1.1.html", current_timestamp=ct)
@@ -111,7 +123,8 @@ def forgot_password():
             print("Registered Email id:", reg_email_id_value)
             reset_status = db_update.reset_password(email_id=reg_email_id_value)
             if reset_status:
-                print("Password reset completed for the specified user. Password has been reset to ", config_parser.password_reset_value)
+                print("Password reset completed for the specified user. Password has been reset to ",
+                      config_parser.password_reset_value)
             else:
                 print("Error while resetting user's password. Unable to reset specified user's password.")
         elif request.form["button"] == "back":

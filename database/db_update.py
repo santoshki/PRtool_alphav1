@@ -34,4 +34,4 @@ def reset_password(email_id):
 
 
 if __name__ == '__main__':
-    db_delete_table("isr_new_issue")
+    db_delete_table("isr_issues")

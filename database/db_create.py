@@ -9,7 +9,8 @@ def create_table(table_name):
         new_issue_query = "CREATE TABLE " + str(table_name) + "(issue_title VARCHAR(255), issue_short_description " \
                                                               "VARCHAR(255),issue_category VARCHAR(255), " \
                                                               "issue_priority VARCHAR(255), issue_assignment_group " \
-                                                              "VARCHAR(255),issue_submitted_by VARCHAR(255)); "
+                                                              "VARCHAR(255), issue_created_on VARCHAR(255), " \
+                                                              "issue_submitted_by VARCHAR(255)); "
         create_table_query = new_issue_query
         cursor_obj.execute(create_table_query)
         print("Table created successfully!")
@@ -20,4 +21,4 @@ def create_table(table_name):
 
 
 if __name__ == '__main__':
-    create_table("isr_new_issue")
+    create_table("isr_issues")

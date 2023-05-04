@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Existing issues Dashboard</title>
+    <div class="container">
+        <a href="{{url_for('logout')}}">Logout</a>
+        <form method="post">
+        <button class="button button1" name="button" value="refresh" type="submit" id="refresh">Refresh</button>
+        </form>
+        <table>
+        <div class="row_headers">
+            <select id="issue_title">
+              <option value="issue_title">Title</option>
+            </select>
+            <select id="issue_short_description">
+                <option value="issue_short_description">Short Description</option>
+            </select>
+            <select id="issue_category">
+                <option value="issue_category">Category</option>
+            </select>
+            <select id="issue_priority">
+                <option value="issue_priority">Priority</option>
+            </select>
+            <select id="issue_assignment_group">
+                <option value="issue_assignment_group">Assignment Group</option>
+            </select>
+            <select id="issue_created_on">
+                <option value="issue_created_on">Created on</option>
+            </select>
+            <select id="ticket_submitted_by">
+                <option value="ticket_submitted_by">Submitted by</option>
+            </select>
+        </div>
+           {%for i in range(0, len)%}
+            <tr>
+                <td><input disabled="disabled" name="issue_title" id={{issue_title_id_value[i]}} type="text"
+                           value={{issue_title[i]}} onchange="Change_function(this.id)"></td>
+                <td><input disabled="disabled" type="text" name="issue_short_description" id={{issue_short_description_id_value[i]}}
+                           value={{issue_short_description[i]}} onchange="Change_function(this.id)"></td>
+                <td><input disabled="disabled" type="text" name="issue_category" id={{issue_category_id_value[i]}}
+                           value={{issue_category[i]}} onchange="Change_function(this.id)"></td>
+                <td><input disabled="disabled" type="text" name="issue_priority" id={{issue_priority_id_value[i]}}
+                           value={{issue_priority[i]}} onchange="Change_function(this.id)"></td>
+                <td><input disabled="disabled" type="text" name="issue_assignment_group" id="{{issue_assignment_group_id_value[i]}}"
+                           value={{issue_assignment_group[i]}} onchange="Change_function(this.id)"></td>
+                <td><input disabled="disabled" type="text" name="issue_created_on" id="{{issue_created_on_id_value[i]}}"
+                           value={{issue_created_on[i]}} onchange="Change_function(this.id)"></td>
+                <td><input disabled="disabled" type="text" name="ticket_submitted_by" id="{{ticket_submitted_by_id_value[i]}}"
+                           value={{ticket_submitted_by[i]}} onchange="Change_function(this.id)"></td>
+                <td><input type="button" name="edit" id={{i}}  value="Edit" onclick="on_click_function(this.id)"></input></td>
+            </tr>
+           {%endfor%}
+        </table>
+        </div>
+</head>
+</html>
+
+
+<script>
+    function on_click_function(clicked_button_id) {
+
+    let emp_id = "employee_name_value_";
+    let emp_email_id = "employee_email_id_value_";
+    let emp_eid = "employee_eid_value_";
+    let emp_career_level_id = "employee_career_level_value_";
+    let chargeability_lead_id = "chargeability_lead_id_value_";
+    let current_project_id = "current_project_id_value_";
+    let current_project_roll_off_date_id = "current_project_roll_off_date_id_value_";
+    let no_of_days_left_for_roll_off_id = "no_of_days_left_for_roll_off_id_value_";
+    let cluster_id = "cluster_id_value_";
+
+    var emp_name_id = emp_id.concat(clicked_button_id);
+    var emp_email_id_value = emp_email_id.concat(clicked_button_id);
+    var emp_eid_id_value = emp_eid.concat(clicked_button_id);
+    var emp_career_level_id_value = emp_career_level_id.concat(clicked_button_id);
+    var chargeability_lead_id_value = chargeability_lead_id.concat(clicked_button_id);
+    var current_project_id_value = current_project_id.concat(clicked_button_id);
+    var current_project_roll_off_date_id_value = current_project_roll_off_date_id.concat(clicked_button_id);
+    var no_of_days_left_for_roll_off_id_value = no_of_days_left_for_roll_off_id.concat(clicked_button_id);
+    var cluster_id_value = cluster_id.concat(clicked_button_id);
+
+    document.getElementById(emp_name_id).disabled = false;
+    document.getElementById(emp_email_id_value).disabled = false;
+    document.getElementById(emp_eid_id_value).disabled = false;
+    document.getElementById(emp_career_level_id_value).disabled = false;
+    document.getElementById(chargeability_lead_id_value).disabled = false;
+    document.getElementById(current_project_id_value).disabled = false;
+    document.getElementById(current_project_roll_off_date_id_value).disabled = false;
+    document.getElementById(no_of_days_left_for_roll_off_id_value).disabled = false;
+    document.getElementById(cluster_id_value).disabled = false;
+
+    document.getElementById(clicked_button_id).value = "Update";
+
+    }
+
+function Change_function(id)
+{
+    var clicked_button_id = id.substr(id.length - 1)
+
+    let emp_id = "employee_name_value_";
+    let emp_email_id = "employee_email_id_value_";
+    let emp_eid = "employee_eid_value_";
+    let emp_career_level_id = "employee_career_level_value_";
+    let chargeability_lead_id = "chargeability_lead_id_value_";
+    let current_project_id = "current_project_id_value_";
+    let current_project_roll_off_date_id = "current_project_roll_off_date_id_value_";
+    let no_of_days_left_for_roll_off_id = "no_of_days_left_for_roll_off_id_value_";
+    let cluster_id = "cluster_id_value_";
+
+    var emp_name_id = emp_id.concat(clicked_button_id);
+    var emp_email_id_value = emp_email_id.concat(clicked_button_id);
+    var emp_eid_id_value = emp_eid.concat(clicked_button_id);
+    var emp_career_level_id_value = emp_career_level_id.concat(clicked_button_id);
+    var chargeability_lead_id_value = chargeability_lead_id.concat(clicked_button_id);
+    var current_project_id_value = current_project_id.concat(clicked_button_id);
+    var current_project_roll_off_date_id_value = current_project_roll_off_date_id.concat(clicked_button_id);
+    var no_of_days_left_for_roll_off_id_value = no_of_days_left_for_roll_off_id.concat(clicked_button_id);
+    var cluster_id_value = cluster_id.concat(clicked_button_id);
+
+
+    document.getElementById(id).disabled = true;
+    document.getElementById(emp_name_id).disabled = true;
+    document.getElementById(emp_email_id_value).disabled = true;
+    document.getElementById(emp_eid_id_value).disabled = true;
+    document.getElementById(emp_career_level_id_value).disabled = true;
+    document.getElementById(chargeability_lead_id_value).disabled = true;
+    document.getElementById(current_project_id_value).disabled = true;
+    document.getElementById(current_project_roll_off_date_id_value).disabled = true;
+    document.getElementById(no_of_days_left_for_roll_off_id_value).disabled = true;
+    document.getElementById(cluster_id_value).disabled = true;
+    document.getElementById(clicked_button_id).value = "Edit";
+
+}
+</script>
+

@@ -12,3 +12,7 @@ db_name = db_value["db_name"]
 db_secret_key = db_value["db_secret_key"]
 db_hostname = db_location + db_name
 password_reset_value = db_value["password_reset_value"]
+
+db_table_names = db_value["db_table_names"]
+db_users = db_table_names["users"]
+db_issues = db_table_names["issues"]
