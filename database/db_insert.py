@@ -4,14 +4,14 @@ from parser import config_parser
 
 
 def register_new_issue(issue_title, issue_short_description, issue_category, issue_priority, issue_assignment_group,
-                       issue_submitted_by):
+                       ct, issue_submitted_by):
     connection = sql.connect(config_parser.db_hostname)
     connection_cursor = connection.cursor()
     connection_cursor.execute("INSERT INTO isr_issues (issue_title, issue_short_description, issue_category, "
-                              "issue_priority, issue_assignment_group, issue_submitted_by) VALUES (?,?,?,?,?,?)",
+                              "issue_priority, issue_assignment_group, issue_created_on, issue_submitted_by) "
+                              "VALUES (?,?,?,?,?,?,?)",
                               (issue_title, issue_short_description, issue_category, issue_priority,
-                               issue_assignment_group,
-                               issue_submitted_by))
+                               issue_assignment_group, ct, issue_submitted_by))
     connection.commit()
     connection.close()
     print("New issue details registered successfully.")

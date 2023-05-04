@@ -9,6 +9,7 @@ def read_data(table_name):
         read_query = "SELECT * FROM " + table_name
         cur.execute(read_query)
         data = cur.fetchall()
+        print(data)
         if table_name == config_parser.db_issues:
             issue_title = []
             issue_short_description = []
@@ -24,7 +25,7 @@ def read_data(table_name):
                 issue_priority.append(details[3])
                 issue_assignment_group.append(details[4])
                 issue_created_on.append(details[5])
-                issue_submitted_by.append(data[6])
+                issue_submitted_by.append(details[6])
                 con.close()
                 no_of_issues = len(issue_title)
                 return no_of_issues, issue_title, issue_short_description, issue_category, issue_priority, issue_assignment_group, \

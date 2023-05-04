@@ -59,13 +59,36 @@ def issue_board():
 
 @app.route('/existing_issues/', methods=['GET', 'POST'])
 def existing_issues():
+    issue_title_id_value = []
+    issue_short_description_id_value = []
+    issue_category_id_value = []
+    issue_priority_id_value = []
+    issue_assignment_group_id_value = []
+    issue_created_on_id_value = []
+    ticket_submitted_by_id_value = []
+
     no_of_issues, issue_title, issue_short_description, issue_category, issue_priority, issue_assignment_group, \
-    issue_created_on, issue_submitted_by = db_read.read_data(config_parser.db_users)
-    return render_template("existing_issues_dashboard.html", len=no_of_issues, issue_title=issue_title,
+    issue_created_on, issue_submitted_by = db_read.read_data(config_parser.db_issues)
+    for i in range(0, no_of_issues):
+        issue_title_id_value.append("issue_title_value_" + str(i))
+        issue_short_description_id_value.append("issue_short_description_value_" + str(i))
+        issue_category_id_value.append("issue_category_value_" + str(i))
+        issue_priority_id_value.append("issue_priority_value_" + str(i))
+        issue_assignment_group_id_value.append("issue_assignment_group_value_" + str(i))
+        issue_created_on_id_value.append("issue_created_on_value_" + str(i))
+        ticket_submitted_by_id_value.append("ticket_submitted_by_value_" + str(i))
+    return render_template("existing_issues_dashboard.html", len=no_of_issues,
+                           issue_title_id_value=issue_title_id_value, issue_title=issue_title,
+                           issue_short_description_id_value=issue_short_description_id_value,
                            issue_short_description=issue_short_description,
-                           issue_category=issue_category, issue_priority=issue_priority,
+                           issue_category_id_value=issue_category_id_value, issue_category=issue_category,
+                           issue_priority_id_value=issue_priority_id_value,
+                           issue_priority=issue_priority,
+                           issue_assignment_group_id_value=issue_assignment_group_id_value,
                            issue_assignment_group=issue_assignment_group,
-                           issue_created_on=issue_created_on, ticket_submitted_by=issue_submitted_by)
+                           issue_created_on_id_value=issue_created_on_id_value,
+                           issue_created_on=issue_created_on, ticket_submitted_by_id_value=ticket_submitted_by_id_value,
+                           ticket_submitted_by=issue_submitted_by)
 
 
 @app.route('/new_issue/', methods=['GET', 'POST'])
