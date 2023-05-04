@@ -14,4 +14,4 @@ def read_data(table_name):
 
 
 if __name__ == '__main__':
-    read_data("isr_new_issue")
+    read_data("isr_registered_users")

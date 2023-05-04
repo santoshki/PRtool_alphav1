@@ -7,10 +7,11 @@ def register_new_issue(issue_title, issue_short_description, issue_category, iss
                        issue_submitted_by):
     connection = sql.connect(config_parser.db_hostname)
     connection_cursor = connection.cursor()
-    connection_cursor.execute(
-        "INSERT INTO isr_new_issue (issue_title, issue_short_description, issue_category, issue_priority, issue_assignment_group, issue_submitted_by) VALUES (?,?,?,?,?,?)",
-        (issue_title, issue_short_description, issue_category, issue_priority, issue_assignment_group,
-         issue_submitted_by))
+    connection_cursor.execute("INSERT INTO isr_new_issue (issue_title, issue_short_description, issue_category, "
+                              "issue_priority, issue_assignment_group, issue_submitted_by) VALUES (?,?,?,?,?,?)",
+                              (issue_title, issue_short_description, issue_category, issue_priority,
+                               issue_assignment_group,
+                               issue_submitted_by))
     connection.commit()
     connection.close()
     print("New issue details registered successfully.")

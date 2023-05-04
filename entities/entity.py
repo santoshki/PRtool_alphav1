@@ -2,7 +2,7 @@ import datetime
 from flask import Flask, render_template, request, redirect
 from flask_login import current_user, login_user, logout_user
 from models import UserModel, db, login
-from database import db_insert, db_read
+from database import db_insert, db_read, db_update
 from parser import config_parser
 
 app = Flask(__name__)
@@ -109,18 +109,11 @@ def forgot_password():
             print("Resetting user's password...")
             reg_email_id_value = request.form["registered_email_id"]
             print("Registered Email id:", reg_email_id_value)
-
-            # cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-            # cursor.execute('SELECT * FROM user_credentials WHERE email_id = % s', (reg_email_id_value,))
-            # account = cursor.fetchone()
-            # print("User account details:", account)
-            # cursor.execute('Update user_credentials SET password = %s WHERE email_id = % s',
-            # ('tested123', reg_email_id_value,))
-            # print("Password has been reset")
-            # mysql.connection.commit()
-            # cursor.execute('SELECT * FROM user_credentials WHERE email_id = % s', (reg_email_id_value,))
-            # account = cursor.fetchone()
-            # print("Updated record:", account)
+            reset_status = db_update.reset_password(email_id=reg_email_id_value)
+            if reset_status:
+                print("Password reset completed for the specified user. Password has been reset to ", config_parser.password_reset_value)
+            else:
+                print("Error while resetting user's password. Unable to reset specified user's password.")
         elif request.form["button"] == "back":
             return redirect('/login')
     return render_template('forgot_password_screen.html', current_timestamp=registration_timestamp)
