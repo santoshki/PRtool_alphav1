@@ -1,5 +1,4 @@
 import sqlite3 as sql
-from usecases import encrypt
 from parser import config_parser
 
 
@@ -19,7 +18,6 @@ def register_new_issue(issue_title, issue_short_description, issue_category, iss
 
 def register_user(first_name, last_name, email_id, password):
     try:
-        # encoded_password = encrypt.password_encode(password)
         con = sql.connect(config_parser.db_hostname)
         cur = con.cursor()
         cur.execute("INSERT INTO pr_registered_users (first_name, last_name, username, email, password) VALUES (?,?,"

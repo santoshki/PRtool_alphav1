@@ -36,19 +36,19 @@
            {%for i in range(0, len)%}
             <tr>
                 <td><input disabled="disabled" name="issue_title" id={{issue_title_id_value[i]}} type="text"
-                           value={{issue_title[i]}} onchange="Change_function(this.id)"></td>
+                           value="{{issue_title[i]}}" onchange="Change_function(this.id)"></td>
                 <td><input disabled="disabled" type="text" name="issue_short_description" id={{issue_short_description_id_value[i]}}
-                           value={{issue_short_description[i]}} onchange="Change_function(this.id)"></td>
+                           value="{{issue_short_description[i]}}" onchange="Change_function(this.id)"></td>
                 <td><input disabled="disabled" type="text" name="issue_category" id={{issue_category_id_value[i]}}
-                           value={{issue_category[i]}} onchange="Change_function(this.id)"></td>
+                           value="{{issue_category[i]}}" onchange="Change_function(this.id)"></td>
                 <td><input disabled="disabled" type="text" name="issue_priority" id={{issue_priority_id_value[i]}}
-                           value={{issue_priority[i]}} onchange="Change_function(this.id)"></td>
+                           value="{{issue_priority[i]}}" onchange="Change_function(this.id)"></td>
                 <td><input disabled="disabled" type="text" name="issue_assignment_group" id="{{issue_assignment_group_id_value[i]}}"
-                           value={{issue_assignment_group[i]}} onchange="Change_function(this.id)"></td>
+                           value="{{issue_assignment_group[i]}}" onchange="Change_function(this.id)"></td>
                 <td><input disabled="disabled" type="text" name="issue_created_on" id="{{issue_created_on_id_value[i]}}"
-                           value={{issue_created_on[i]}} onchange="Change_function(this.id)"></td>
+                           value="{{issue_created_on[i]}}" onchange="Change_function(this.id)"></td>
                 <td><input disabled="disabled" type="text" name="ticket_submitted_by" id="{{ticket_submitted_by_id_value[i]}}"
-                           value={{ticket_submitted_by[i]}} onchange="Change_function(this.id)"></td>
+                           value="{{ticket_submitted_by[i]}}" onchange="Change_function(this.id)"></td>
                 <td><input type="button" name="edit" id={{i}}  value="Edit" onclick="on_click_function(this.id)"></input></td>
             </tr>
            {%endfor%}

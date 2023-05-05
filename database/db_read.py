@@ -9,7 +9,6 @@ def read_data(table_name):
         read_query = "SELECT * FROM " + table_name
         cur.execute(read_query)
         data = cur.fetchall()
-        print(data)
         if table_name == config_parser.db_issues:
             issue_title = []
             issue_short_description = []
@@ -27,8 +26,9 @@ def read_data(table_name):
                 issue_created_on.append(details[5])
                 issue_submitted_by.append(details[6])
                 con.close()
-                no_of_issues = len(issue_title)
-                return no_of_issues, issue_title, issue_short_description, issue_category, issue_priority, issue_assignment_group, \
+            no_of_issues = len(issue_title)
+            print("Total number of existing issues:", no_of_issues)
+            return no_of_issues, issue_title, issue_short_description, issue_category, issue_priority, issue_assignment_group, \
                        issue_created_on, issue_submitted_by
         elif table_name == config_parser.db_users:
             print(data)
