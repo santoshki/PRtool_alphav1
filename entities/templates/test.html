@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Input Page</title>
+</head>
+<body>
+	<form method='POST' action="/save/">
+
+		<input type="text" name="username" id="uname"/>
+		{%for i in range(0, len)%}
+		<tr>
+
+		<td><input disabled="disabled" type="text" name="comment" id="comment1" value={{value[i]}}/></td>
+		<td><input type="submit" value="Submit"/></td>
+		{%endfor%}
+		</tr>
+	</form>
+</body>
+</html>

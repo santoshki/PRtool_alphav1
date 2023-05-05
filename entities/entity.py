@@ -77,6 +77,21 @@ def existing_issues():
         issue_assignment_group_id_value.append("issue_assignment_group_value_" + str(i))
         issue_created_on_id_value.append("issue_created_on_value_" + str(i))
         ticket_submitted_by_id_value.append("ticket_submitted_by_value_" + str(i))
+
+    if request.method == "POST":
+        if request.form["button"] == "Edit":
+            print("Edit button pressed.")
+            print(request.form)
+            print("form keys:", request.form.items())
+            form_data = request.form.get('issue_title')
+            print(form_data)
+            """issue_title = form_data["issue_title"]
+            issue_short_description = form_data["issue_short_description"]
+            issue_category = form_data.get("issue_category")
+            issue_priority = form_data.get("issue_priority")
+            issue_assignment_group = form_data.get("assignment_group")
+            issue_submitted_by = form_data.get("ticket_submitted_by")"""
+            # print(issue_short_description)
     return render_template("existing_issues_dashboard.html", len=no_of_issues,
                            issue_title_id_value=issue_title_id_value, issue_title=issue_title,
                            issue_short_description_id_value=issue_short_description_id_value,
@@ -88,6 +103,17 @@ def existing_issues():
                            issue_created_on_id_value=issue_created_on_id_value,
                            issue_created_on=issue_created_on, ticket_submitted_by_id_value=ticket_submitted_by_id_value,
                            ticket_submitted_by=issue_submitted_by)
+
+
+@app.route('/edit_data/<id>', methods=['GET','POST'])
+def edit_data(id):
+    print("id:", id[3:])
+    print(request.args.get("id"))
+    print(request.form.getlist('issue_title'))
+    """ if request.method == "POST":
+        data = request.form.get('issue_title[1]')
+        print(data)"""
+    return str(request.form)
 
 
 @app.route('/new_issue/', methods=['GET', 'POST'])
